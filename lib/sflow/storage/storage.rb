@@ -20,12 +20,13 @@ class SflowStorage
 
       prefixed_sflow = Hash[sflow.map {|k, v| [mappings[k], v] }]
 
-      if sflow['i_iface_value'] and sflow['o_iface_value']
-        i_iface_name = {"sflow_i_iface_name" => SNMPwalk.mapswitchportname(sflow['agent_address'],sflow['i_iface_value'])}
-        o_iface_name = {"sflow_o_iface_name" => SNMPwalk.mapswitchportname(sflow['agent_address'],sflow['o_iface_value'])}
-        prefixed_sflow.merge!(i_iface_name)
-        prefixed_sflow.merge!(o_iface_name)
-      end
+			# Interface names aren't meaningful at this stage.
+      #if sflow['i_iface_value'] and sflow['o_iface_value']
+      #  i_iface_name = {"sflow_i_iface_name" => SNMPwalk.mapswitchportname(sflow['agent_address'],sflow['i_iface_value'])}
+      #  o_iface_name = {"sflow_o_iface_name" => SNMPwalk.mapswitchportname(sflow['agent_address'],sflow['o_iface_value'])}
+      #  prefixed_sflow.merge!(i_iface_name)
+      #  prefixed_sflow.merge!(o_iface_name)
+      #end
 
       $logstash.send(prefixed_sflow.to_json, 0)
 

@@ -4,7 +4,7 @@ class SflowParser
       header = Header.read(data)
       if header.version == 5 
         agent_address = IPAddr.new(header.agent_address, Socket::AF_INET).to_s
-        @sflow = {"agent_address" => $switch_hash[agent_address]}
+        @sflow = {"agent_address" => agent_address }
 
           header.flow_samples.each do |sample|
             if sample.sflow_sample_type == 3 or sample.sflow_sample_type ==  1
