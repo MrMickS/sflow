@@ -168,7 +168,7 @@ end
 class Sflow5rawpacketdataVLAN < BinData::Record
   endian :big
   uint16 :prio
-  uint16 :type
+  uint16 :vlantype
   array :vlandata, :read_until => :eof do
     string :data, :length => 1
   end
