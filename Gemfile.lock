@@ -15,7 +15,7 @@ GEM
     elasticsearch-transport (1.0.1)
       faraday
       multi_json
-    eventmachine (1.0.3)
+    eventmachine (~>1.0.3)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     json (1.8.1)
